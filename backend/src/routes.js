@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const routes = Router();
 
-routes.get("/", (req, res) => res.json({ message: "Hello Dev!" }));
+const AuthController = require("./controllers/AuthController");
+
+// Autenticação de Usuários
+routes.post("/auth/register", AuthController.register);
 
 module.exports = routes;

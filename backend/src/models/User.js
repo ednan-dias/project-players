@@ -16,6 +16,12 @@ class User extends Model {
       },
       {
         sequelize,
+        defaultScope: {
+          attributes: {
+            exclude: ["password", "status", "is_admin", "confirmation_code"],
+          },
+        },
+        tableName: "users",
         hooks: {
           beforeCreate: (user, options) => {
             const hash = hashSync(user.password, 15);
